@@ -1,4 +1,4 @@
-# areedHatke
+# KhareedHatke
 
 areedHatke is a smartphone price comparison and tracking platform that helps users find the best deals across multiple e-commerce marketplaces.
 
