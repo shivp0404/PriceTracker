@@ -1,6 +1,6 @@
 
 import { chromium } from "playwright";
-import { prisma } from "../../lib/prisma.js";
+import { prisma } from "../prisma.js";
 
 const AMAZON_URL = "https://www.amazon.in";
 const CATEGORY = "smartphones";

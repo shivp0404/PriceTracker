@@ -1,6 +1,6 @@
 
 import { chromium } from "playwright";
-import { prisma } from "../../lib/prisma.js";
+import { prisma } from "../prisma.js";
 
 const CROMA_URL = "https://www.croma.com";
 const CATEGORY = "mobile phones";

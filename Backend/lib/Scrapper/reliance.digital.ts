@@ -1,6 +1,6 @@
 
 import { chromium } from "playwright";
-import { prisma } from "../../lib/prisma.js";
+import { prisma } from "../prisma.js";
 
 const RELIANCE_URL = "https://www.reliancedigital.in";
 const CATEGORY = "mobile phone";

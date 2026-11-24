@@ -1,9 +1,9 @@
-import { prisma } from "../../lib/prisma.js";
+import { prisma } from "../prisma.js";
 
-import scrapeAmazon from "../priceScrapper/amazonprice.scrapper.js";
-import PricescrapeFlipkart from "../priceScrapper/flipkartprice.scrapper.js";
-import scrapeRelianceDigital from "../priceScrapper/relianceprice.scrapper.js";
-import scrapeCroma from "../priceScrapper/cromapricescrapper.js";
+import scrapeAmazon from "./amazonprice.scrapper.js";
+import PricescrapeFlipkart from "./flipkartprice.scrapper.js";
+import scrapeRelianceDigital from "./relianceprice.scrapper.js";
+import scrapeCroma from "./cromapricescrapper.js";
 
 type PriceScraper = (url: string) => Promise<number | null>;
 
