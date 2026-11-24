@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id          String @id @default(uuid())
+  name        String
+  brand       String
+  description String
+  color       String
+  ram         String?
+  storage     String?
+  image       String?
+
+  listings    ProductListing[]
+}
+
+model MarketPlace {
+  id        String @id @default(uuid())
+  name      String @unique
+
+  listings  ProductListing[]
+}
+
+model ProductListing {
+  id            String @id @default(uuid())
+
+  productId     String
+  marketplaceId String
+
+  price         Decimal @db.Decimal(10, 2)
+  url           String @unique
+  rating        Float?
+
+  product       Product     @relation(fields: [productId], references: [id])
+  marketplace   MarketPlace @relation(fields: [marketplaceId], references: [id])
+
+  @@unique([productId, marketplaceId])
+}
+
+model History {
+  id            String              @id @default(uuid())
+  productId     String
+  marketplaceId String
+  entries       PriceHistoryEntry[]
+
+  @@unique([productId, marketplaceId])
+}
+
+model PriceHistoryEntry {
+  id         String   @id @default(uuid())
+  historyId  String
+  price      Decimal  @db.Decimal(10, 2)
+  recordedAt DateTime @default(now())
+
+  history    History  @relation(fields: [historyId], references: [id], onDelete: Cascade)
+
+  @@index([historyId, recordedAt])
+}
